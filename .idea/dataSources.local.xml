@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="aqua@aquajmt.com" uuid="1c92f194-290c-49b6-b913-ea753a7d46ab">
-      <database-info product="PostgreSQL" version="9.6.2" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.1.1">
+    <data-source name="wpps@localhost" uuid="dd422464-a9b4-4afe-9812-71578e2fb3e5">
+      <database-info product="PostgreSQL" version="9.6.5" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.1.1">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
-      <user-name>postgres</user-name>
-      <introspection-schemas>aqua:public</introspection-schemas>
+      <user-name>macbookpro</user-name>
+      <introspection-schemas>wpps:public</introspection-schemas>
     </data-source>
   </component>
 </project>

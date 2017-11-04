@@ -11,7 +11,6 @@
           th:href="@{../../static/css/style.css}" rel="stylesheet" media="screen"/>
 </head>
 <body>
-
     <div th:fragment="header">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -22,7 +21,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#" th:href="@{/dashboard}"><i class="fa fa-tint" aria-hidden="true"></i> &nbsp; Aqua JMT </a>
+                <a class="navbar-brand" href="#" th:href="@{/dashboard}"><i class="fa fa-tint" aria-hidden="true"></i> &nbsp; WPPS Portal</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -48,15 +47,16 @@
             <!-- /.navbar-top-links -->
 
             <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
+                <div class="sidebar-nav navbar-collapse" >
                     <ul class="nav" id="side-menu">
-                        <li><a href="#" th:href="@{/dashboard}"><i class="fa fa-dashboard fa-fw"></i> Shop Dashboard</a></li>
-                        <li><a href="#" th:href="@{/sales}"><i class="fa fa-usd fa-fw"></i> Sales</a></li>
-                        <li><a href="#" th:href="@{/inventory}"><i class="fa fa-cubes fa-fw"></i> Bottle Inventory</a></li>
-                        <li><a href="#" th:href="@{/bottlesales}"><i class="fa fa-usd fa-fw"></i> Bottle Sales</a></li>
-                        <li><a href="#" th:href="@{/profile}"><i class="fa fa-cog fa-fw"></i> Edit Profile</a></li>
-                        <li><a href="#" th:href="@{/rating}"><i class="fa fa-star-half-o fa-fw"></i> Rating</a></li>
-                        <li><a href="#" th:href="@{/logout}"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+                        <li style="margin-bottom: 10px"><a href="#" th:href="@{/dashboard}"><i class="fa fa-dashboard fa-fw"></i>DASHBOARD</a></li>
+                        <li style="margin-bottom: 10px"><a href="#" th:href="@{/request}"><i class="fa fa-usd fa-fw"></i> REQUEST</a></li>
+                        <li style="margin-bottom: 10px"><a href="#" th:href="@{/approval}"><i class="fa fa-cubes fa-fw"></i> APPROVAL</a></li>
+                        <li style="margin-bottom: 10px"><a href="#" th:href="@{/procure}"><i class="fa fa-usd fa-fw"></i> PROCURE</a></li>
+                        <li style="margin-bottom: 10px"><a href="#" th:href="@{/receive}"><i class="fa fa-cog fa-fw"></i> RECEIVE</a></li>
+                        <li style="margin-bottom: 10px"><a href="#" th:href="@{/manage}"><i class="fa fa-star-half-o fa-fw"></i> MANAGE</a></li>
+                        <li style="margin-bottom: 10px"><a href="#" th:href="@{/report}"><i class="fa fa-sign-out fa-fw"></i> REPORTS</a></li>
+                        <li style="margin-bottom: 10px"><a href="#" th:href="@{/settings}"><i class="fa fa-sign-out fa-fw"></i> SETTINGS</a></li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
