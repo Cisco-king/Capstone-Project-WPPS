@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>AquaJMT Login</title>
+    <title>WPPS Login</title>
     <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
 </head>
 <body>
@@ -20,11 +20,11 @@
                     <fieldset>
                         <form th:object="${user}" th:action="@{/loginUser}" method="POST">
                             <div class="form-group">
-                                <center><img src="../static/images/logo.png" height="140px" width="180px"/></center>
+                                <center><img src="../static/images/rcbcrealtycorp.png" height="50%" width="50%"/></center>
                             </div>
                             <div class="form-group">
                                 <h4>
-                                    <center>Log In to AquaJMT Admin Page</center>
+                                    <center>Log In to RCBC Realty Corp Admin Page</center>
                                 </h4>
                             </div>
                             <div th:if="${param.error}" class="alert alert-danger">Invalid username and password</div>
@@ -39,7 +39,7 @@
                             </div>
                             <div class="form-actions form-group">
                                 <center>
-                                    <button th:type="submit" class="btn btn-aqua">LOG IN</button>
+                                    <button th:type="submit" class="btn btn-aqua">SIGN IN</button>
                                 </center>
                             </div>
                         </form>
