@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>AquaJMT Login</title>
+    <title>WPPS Login</title>
     <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
+
+
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
@@ -20,11 +25,11 @@
                     <fieldset>
                         <form th:object="${user}" th:action="@{/loginUser}" method="POST">
                             <div class="form-group">
-                                <center><img src="../static/images/logo.png" height="140px" width="180px"/></center>
+                                <center><img src="../static/images/rcbc-logo.png" height="140px" width="180px"/></center>
                             </div>
                             <div class="form-group">
                                 <h4>
-                                    <center>Log In to AquaJMT Admin Page</center>
+                                    <center>Log In to Web Portal</center>
                                 </h4>
                             </div>
                             <div th:if="${param.error}" class="alert alert-danger">Invalid username and password</div>
@@ -39,7 +44,7 @@
                             </div>
                             <div class="form-actions form-group">
                                 <center>
-                                    <button th:type="submit" class="btn btn-aqua">LOG IN</button>
+                                    <button id="btnSubmit" th:type="submit"  class="btn btn-aqua">LOG IN</button>
                                 </center>
                             </div>
                         </form>

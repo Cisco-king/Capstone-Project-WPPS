@@ -47,11 +47,12 @@ public class WPPSController {
     @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
     public String loginUser(LoginUser shop, Model model) {
 
+        System.out.println("SHOP EMAIL: " + shop.getEmail());
         LoginUser user = shopService.validateUser(shop);
 
 
         if (null != user) {
-            model.addAttribute("user", user);
+            model.addAttribute("sessionUser", user);
             System.out.println("tama");
             return "redirect:/dashboard/";
         } else {
@@ -62,7 +63,12 @@ public class WPPSController {
 
 
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-    public String showDashboard() {
+    public String showDashboard(@ModelAttribute("sessionUser") LoginUser user, Model model) {
+        System.out.println("USER EMAIL: " + user.getEmail());
+        if (user.getEmail() == null)
+         return "redirect:/login";
+
+        model.addAttribute("email", user.getEmail());
 
         return "dashboard";
     }
