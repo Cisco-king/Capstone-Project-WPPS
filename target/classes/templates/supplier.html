@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>WPPS | Users</title>
+<head lang="en">
+    <title>WPPS | Supplier </title>
     <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
-
-
 </head>
 <body>
-
 <div id="wrapper" style="background-color: #00008B">
     <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
 
@@ -33,11 +30,14 @@
                                     <option>The past 30 days</option>
                                     <option>The past year</option>
                                 </select>-->
-                                <button type="button" onclick="location.href='adduser';" class="btn btn-primary" style="float:right">
+                                <button type="button" onclick="" class="btn btn-primary" style="float:right">
                                     <i class="fa fa-plus-square-o fa-fw"></i>
-                                    Add New User
+                                    Add New Supplier
                                 </button>
                             </div>
+                            <button type="button" onclick="" class="btn btn-primary" style="float:right">
+                                Import CSV
+                            </button>
                             <!-- OKS NA!!!!-->
 
                         </form>
@@ -48,10 +48,11 @@
                                id="dataTables-example">
                             <thead>
                             <tr>
-                                <th>User ID</th>
+                                <th>Supplier ID</th>
                                 <th>Name</th>
-                                <th>Username</th>
                                 <th>Email</th>
+                                <th>Contact Number</th>
+                                <th>Address</th>
                                 <th>Action</th>
                                 <!--<th>Cost per Bottle</th>
                                 <th>No. of Slim</th>
@@ -59,10 +60,11 @@
                                 <th>Total Cost</th>-->
                             </tr>
                             <tr>
-                                <td>1</td>
-                                <td>Eco Gutierrez</td>
-                                <td>eco.gutierrez.engineering</td>
-                                <td>eco.guitierrez.engineering@rcbcrealty.net</td>
+                                <td>2001</td>
+                                <td>Crisostomo Company</td>
+                                <td>crisostomoco@yahoo.com</td>
+                                <td>(02) 456-1443</td>
+                                <td>Makati Ave., Makati City</td>
                                 <td>
                                     <button><i class="fa fa-edit fa-fw"></i></button>
                                     |
@@ -70,10 +72,11 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>2</td>
-                                <td>Tina Sinabawan</td>
-                                <td>tina.sinabawan.accounting</td>
-                                <td>tina.sinabawan.accounting@rcbcrealty.net</td>
+                                <td>2002</td>
+                                <td>Capstone Inc</td>
+                                <td>capstoneinc@gmail.com</td>
+                                <td>(02) 879-1423</td>
+                                <td>Reposo, Makati City</td>
                                 <td>
                                     <button><i class="fa fa-edit fa-fw"></i></button>
                                     |
@@ -81,10 +84,11 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>3</td>
-                                <td>Kardo Dalisay</td>
-                                <td>kardo.dalisay.purchasing</td>
-                                <td>kardo.dalisay.purchasing@rcbcrealty.net</td>
+                                <td>2003</td>
+                                <td>Kardo Cement</td>
+                                <td>kardocement@hotmail.com</td>
+                                <td>(02) 459-4349</td>
+                                <td>Quezon City</td>
                                 <td>
                                     <button><i class="fa fa-edit fa-fw"></i></button>
                                     |
@@ -178,5 +182,8 @@
         }
     </script>
 </div>
+
+
+
 </body>
 </html>
