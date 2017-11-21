@@ -7,6 +7,7 @@
           th:href="@{../static/vendor/bootstrap/css/bootstrap.min.css}"
           rel="stylesheet" media="screen"/>
 
+
     <link href="../../static/css/style.css"
           th:href="@{../../static/css/style.css}" rel="stylesheet" media="screen"/>
 </head>
@@ -30,11 +31,11 @@
 
 
                 <!-- /.dropdown -->
-                <label>Logged in as: </label>
+                <label>Logged in as: <span th:text="*{email}"> </span> </label>
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i><span class="label label-info" th:text="${username}"></span> <i class="fa fa-caret-down fa-fw"></i>
+                        <i class="fa fa-user fa-fw"></i><span class="label label-info" th:text="*{email}"></span> <i class="fa fa-caret-down fa-fw"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#" th:href="@{/logout}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>

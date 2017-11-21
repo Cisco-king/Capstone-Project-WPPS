@@ -3,9 +3,19 @@
 <head lang="en">
     <title>WPPS | Dashboard </title>
     <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#pendingText").click(function () {
+                $(this).hide();
+            })
+        })
+    </script>
 </head>
-<body>
 
+
+
+<body>
 <div id="wrapper" style="background-color: #00008B">
     <div class="container-fluid">
         <div class="row">
@@ -32,6 +42,7 @@
                         <b style="color: black">Pending Request</b>
                         <hr style="height: 2%; color: black"/>
                     </div>
+<<<<<<< HEAD
                     <div class="col-md-12">
                         <table>
                             <tr>
@@ -41,6 +52,10 @@
                                 <th class="col-md-3 text-center">Approval</th>
                             </tr>
                         </table>
+=======
+                    <div id="pendingText" class="col-md-4">
+                        <center><h5>PENDING ORDER REQUESTS </h5></center>
+>>>>>>> 6908bc9331947aebeb02a723af397ad4fc0658d1
                     </div>
                 </div>
             </div>

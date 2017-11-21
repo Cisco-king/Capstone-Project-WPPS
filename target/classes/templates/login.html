@@ -3,8 +3,13 @@
 <head>
     <title>WPPS Login</title>
     <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
+
+
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
@@ -20,11 +25,19 @@
                     <fieldset>
                         <form th:object="${user}" th:action="@{/loginUser}" method="POST">
                             <div class="form-group">
+<<<<<<< HEAD
                                 <center><img src="../static/images/rcbcrealtycorp.png" height="50%" width="50%"/></center>
                             </div>
                             <div class="form-group">
                                 <h4>
                                     <center>Log In to RCBC Realty Corp Admin Page</center>
+=======
+                                <center><img src="../static/images/rcbc-logo.png" height="140px" width="180px"/></center>
+                            </div>
+                            <div class="form-group">
+                                <h4>
+                                    <center>Log In to Web Portal</center>
+>>>>>>> 6908bc9331947aebeb02a723af397ad4fc0658d1
                                 </h4>
                             </div>
                             <div th:if="${param.error}" class="alert alert-danger">Invalid username and password</div>
@@ -39,7 +52,11 @@
                             </div>
                             <div class="form-actions form-group">
                                 <center>
+<<<<<<< HEAD
                                     <button th:type="submit" class="btn btn-aqua">SIGN IN</button>
+=======
+                                    <button id="btnSubmit" th:type="submit"  class="btn btn-aqua">LOG IN</button>
+>>>>>>> 6908bc9331947aebeb02a723af397ad4fc0658d1
                                 </center>
                             </div>
                         </form>

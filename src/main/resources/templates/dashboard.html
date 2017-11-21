@@ -3,9 +3,19 @@
 <head lang="en">
     <title>AquaJMT | Dashboard </title>
     <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#pendingText").click(function () {
+                $(this).hide();
+            })
+        })
+    </script>
 </head>
-<body>
 
+
+
+<body>
 <div id="wrapper" style="background-color: #00008B">
     <div class="container-fluid">
         <div class="row">
@@ -32,8 +42,8 @@
                         <b style="color: black">Pending Request</b>
                         <hr style="height: 2%; color: black" />
                     </div>
-                    <div class="col-md-4">
-                        <center><h5>PENDING ORDER REQUESTS</h5></center>
+                    <div id="pendingText" class="col-md-4">
+                        <center><h5>PENDING ORDER REQUESTS </h5></center>
                     </div>
                 </div>
             </div>

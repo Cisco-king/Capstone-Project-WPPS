@@ -24875,3 +24875,20 @@ org.xml.sax.SAXParseException: The content of elements must consist of well-form
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.11.jar:8.5.11]
 	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_73]
 
+2017-11-21 13:43:35.788 TRACE 2984 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [C:\Users\Tim\Desktop\Capstone System\target\classes\com\capstone\jmt\mapper\CustomerMapper.class]
+2017-11-21 13:43:35.788 DEBUG 2984 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Identified candidate component class: file [C:\Users\Tim\Desktop\Capstone System\target\classes\com\capstone\jmt\mapper\CustomerMapper.class]
+2017-11-21 13:43:35.788 TRACE 2984 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [C:\Users\Tim\Desktop\Capstone System\target\classes\com\capstone\jmt\mapper\OrderMapper.class]
+2017-11-21 13:43:35.788 DEBUG 2984 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Identified candidate component class: file [C:\Users\Tim\Desktop\Capstone System\target\classes\com\capstone\jmt\mapper\OrderMapper.class]
+2017-11-21 13:43:35.788 TRACE 2984 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [C:\Users\Tim\Desktop\Capstone System\target\classes\com\capstone\jmt\mapper\ShopMapper.class]
+2017-11-21 13:43:35.788 DEBUG 2984 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Identified candidate component class: file [C:\Users\Tim\Desktop\Capstone System\target\classes\com\capstone\jmt\mapper\ShopMapper.class]
+2017-11-21 13:43:35.788 DEBUG 2984 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Creating MapperFactoryBean with name 'customerMapper' and 'com.capstone.jmt.mapper.CustomerMapper' mapperInterface
+2017-11-21 13:43:35.788 DEBUG 2984 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Enabling autowire by type for MapperFactoryBean with name 'customerMapper'.
+2017-11-21 13:43:35.788 DEBUG 2984 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Creating MapperFactoryBean with name 'orderMapper' and 'com.capstone.jmt.mapper.OrderMapper' mapperInterface
+2017-11-21 13:43:35.788 DEBUG 2984 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Enabling autowire by type for MapperFactoryBean with name 'orderMapper'.
+2017-11-21 13:43:35.788 DEBUG 2984 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Creating MapperFactoryBean with name 'shopMapper' and 'com.capstone.jmt.mapper.ShopMapper' mapperInterface
+2017-11-21 13:43:35.788 DEBUG 2984 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Enabling autowire by type for MapperFactoryBean with name 'shopMapper'.
+2017-11-21 13:43:47.645 DEBUG 2984 --- [restartedMain] org.apache.ibatis.logging.LogFactory     : Logging initialized using 'class org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl' adapter.
+2017-11-21 13:43:47.661 DEBUG 2984 --- [restartedMain] o.mybatis.spring.SqlSessionFactoryBean   : Parsed configuration file: 'class path resource [mybatis-config.xml]'
+2017-11-21 13:43:47.802 DEBUG 2984 --- [restartedMain] o.mybatis.spring.SqlSessionFactoryBean   : Parsed mapper file: 'class path resource [mapper/CustomerMapper.xml]'
+2017-11-21 13:43:47.911 DEBUG 2984 --- [restartedMain] o.mybatis.spring.SqlSessionFactoryBean   : Parsed mapper file: 'class path resource [mapper/ShopMapper.xml]'
+2017-11-21 13:43:47.989 DEBUG 2984 --- [restartedMain] o.mybatis.spring.SqlSessionFactoryBean   : Parsed mapper file: 'class path resource [mapper/OrderMapper.xml]'
