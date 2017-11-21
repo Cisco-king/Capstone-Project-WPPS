@@ -126,4 +126,10 @@ public class WPPSController {
 
         return "adduser";
     }
+
+    @RequestMapping(value = "/budget", method = RequestMethod.GET)
+    public String showBudget() {
+
+        return "budget";
+    }
 }
