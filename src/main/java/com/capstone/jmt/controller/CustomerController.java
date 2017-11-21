@@ -33,7 +33,6 @@ public class CustomerController {
 
         return "main";
     }
-
     @RequestMapping(value="/customer", method=RequestMethod.GET)
     public ResponseEntity<?> getCustomerById(@RequestParam("id") String id){
         HashMap<String, Object> response = new HashMap<>();

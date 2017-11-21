@@ -23,14 +23,14 @@ public class WPPSController {
 
 
     @ModelAttribute("sessionUser")
-    public LoginUser loginCurrentUser(){
+    public LoginUser loginCurrentUser() {
         return new LoginUser();
     }
 
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginCurrent(@RequestParam(value = "error", required = false) String error,
-                                Model model) {
+                               Model model) {
         if (null != error) {
             if (error.equals("1"))
                 model.addAttribute("param.error", true);
@@ -68,54 +68,56 @@ public class WPPSController {
     }
 
     @RequestMapping(value = "/request", method = RequestMethod.GET)
-    public String showRequest(){
+    public String showRequest() {
 
         return "request";
     }
 
     @RequestMapping(value = "/approval", method = RequestMethod.GET)
-    public String showApproval(){
+    public String showApproval() {
 
         return "approval";
     }
 
     @RequestMapping(value = "/procure", method = RequestMethod.GET)
-    public String showProcure(){
+    public String showProcure() {
 
         return "procure";
     }
 
     @RequestMapping(value = "/receive", method = RequestMethod.GET)
-    public String showReceive(){
+    public String showReceive() {
 
         return "receive";
     }
 
     @RequestMapping(value = "/manage", method = RequestMethod.GET)
-    public String showManage(){
+    public String showManage() {
 
         return "manage";
     }
 
     @RequestMapping(value = "/report", method = RequestMethod.GET)
-    public String showReport(){
+    public String showReport() {
 
         return "report";
     }
 
     @RequestMapping(value = "/settings", method = RequestMethod.GET)
-    public String showSettings(){
+    public String showSettings() {
 
         return "settings";
     }
 
+    @RequestMapping(value = "/supplier", method = RequestMethod.GET)
+    public String showSupplier() {
 
+        return "supplier";
+    }
 
+    @RequestMapping(value = "/adduser", method = RequestMethod.GET)
+    public String showAdduser() {
 
-
-
-
-
-
-
+        return "adduser";
+    }
 }
