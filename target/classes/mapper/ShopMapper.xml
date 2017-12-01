@@ -4,14 +4,51 @@
 
     <resultMap id="shopLoginMap" type="com.capstone.jmt.data.LoginUser">
         <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="first_name" property="firstName" jdbcType="VARCHAR" />
+        <result column="last_name" property="lastName" jdbcType="VARCHAR" />
+        <result column="emp_id" property="empId" jdbcType="VARCHAR" />
+        <result column="contact_no" property="contactNo" jdbcType="VARCHAR" />
         <result column="password" property="password" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <resultMap id="materialsMap" type="com.capstone.jmt.data.Material">
+        <result column="material_id" property="materialId" jdbcType="VARCHAR" />
+        <result column="material_desc" property="materialDesc" jdbcType="VARCHAR" />
+        <result column="quantity" property="qty" jdbcType="INTEGER" />
+        <result column="price" property="price" jdbcType="DECIMAL" />
+        <result column="last_order" property="lastOrder" jdbcType="TIMESTAMP" />
+        <result column="created_on" property="createdOn" jdbcType="TIMESTAMP" />
+        <result column="created_by" property="createBy" jdbcType="VARCHAR" />
+        <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
     </resultMap>
 
 
 
+
     <select id="loadUserByEmail" resultMap="shopLoginMap" resultType="com.capstone.jmt.data.LoginUser">
-        SELECT * FROM login WHERE email = #{email}
+        SELECT * FROM data_employee WHERE email = #{email}
     </select>
+
+    <select id="getAllUsers" resultMap="shopLoginMap" resultType="java.util.List">
+        SELECT * FROM data_employee
+    </select>
+
+    <select id="getAllMaterials" resultMap="materialsMap" resultType="java.util.List">
+        SELECT * FROM data_materials
+    </select>
+
+    <insert id="addUser" flushCache="true">
+      INSERT INTO data_employee(
+      first_name, last_name, emp_id, contact_no, email, password
+      ) VALUES (
+      #{newUser.firstName, jdbcType=VARCHAR},
+      #{newUser.lastName, jdbcType=VARCHAR},
+      #{newUser.empId, jdbcType=VARCHAR},
+      #{newUser.contactNo, jdbcType=VARCHAR},
+      #{newUser.email, jdbcType=VARCHAR},
+      #{newUser.password, jdbcType=VARCHAR}
+      )
+    </insert>
     
     <!--<select id="getShopInfoById" resultMap="shopInfoMap" resultType="com.capstone.jmt.data.ShopInfo">-->
         <!--SELECT * FROM shop_info WHERE id = #{id}-->

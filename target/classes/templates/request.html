@@ -48,9 +48,8 @@
                                id="dataTables-example">
                             <thead>
                             <tr>
-                                <th>User ID</th>
+                                <th>Employee ID</th>
                                 <th>Name</th>
-                                <th>Username</th>
                                 <th>Email</th>
                                 <th>Action</th>
                                 <!--<th>Cost per Bottle</th>
@@ -58,51 +57,18 @@
                                 <th>Cost per Bottle</th>
                                 <th>Total Cost</th>-->
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Eco Gutierrez</td>
-                                <td>eco.gutierrez.engineering</td>
-                                <td>eco.guitierrez.engineering@rcbcrealty.net</td>
-                                <td>
-                                    <button><i class="fa fa-edit fa-fw"></i></button>
-                                    |
-                                    <button><i class="fa fa-trash-o fa-fw"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Tina Sinabawan</td>
-                                <td>tina.sinabawan.accounting</td>
-                                <td>tina.sinabawan.accounting@rcbcrealty.net</td>
-                                <td>
-                                    <button><i class="fa fa-edit fa-fw"></i></button>
-                                    |
-                                    <button><i class="fa fa-trash-o fa-fw"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Kardo Dalisay</td>
-                                <td>kardo.dalisay.purchasing</td>
-                                <td>kardo.dalisay.purchasing@rcbcrealty.net</td>
-                                <td>
-                                    <button><i class="fa fa-edit fa-fw"></i></button>
-                                    |
-                                    <button><i class="fa fa-trash-o fa-fw"></i></button>
-                                </td>
-                            </tr>
                             </thead>
                             <tbody>
-                            <!--<tr class="odd gradeX" th:each="battleSales: ${bottleSalesRecord}">
-                                <td th:text="${battleSales.createdOn}"></td>
-                                <td th:text="${battleSales.name}"></td>
-                                <td th:text="${battleSales.customerAddress}"></td>
-                                <td th:text="${battleSales.roundOrdered}" class="center"></td>
-                                <td th:text="${battleSales.costPerItem}" class="center"></td>
-                                <td th:text="${battleSales.slimOrdered}" class="center"></td>
-                                <td th:text="${battleSales.costPerItem}" class="center"></td>
-                                <td th:text="${battleSales.totalCost}" class="center"></td>
-                            </tr>-->
+                            <tr class="odd gradeX" th:each="userDetails: ${users}">
+                                <td th:text="${userDetails.empId}"></td>
+                                <td th:text="${userDetails.firstName + ' ' + userDetails.lastName}"></td>
+                                <td th:text="${userDetails.email}"></td>
+                                <td>
+                                    <button><i class="fa fa-edit fa-fw"></i></button>
+                                    |
+                                    <button><i class="fa fa-trash-o fa-fw"></i></button>
+                                </td>
+                            </tr>
                             </tbody>
                             <thead>
                             <!--<tr>

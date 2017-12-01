@@ -39,6 +39,12 @@ public interface ShopMapper {
 
     LoginUser loadUserByEmail(@Param("email") String email);
 
+    List<LoginUser> getAllUsers();
+
+    List<Material> getAllMaterials();
+
+    void addUser(@Param("newUser") LoginUser loginUser);
+
 //    Double getTotalSalesById(@Param("shopId") String shopId);
 //
 //    Integer getSalesCount(@Param("shopId") String shopId);

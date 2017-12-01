@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import sun.rmi.runtime.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,21 @@ public class ShopService {
             return account;
         }else
         return null;
+    }
+
+    public List<LoginUser> getAllUsers(){
+        logger.info("getAllUsers");
+        return shopMapper.getAllUsers();
+    }
+
+    public List<Material> getAllMaterials(){
+        logger.info("getAllMaterials");
+        return shopMapper.getAllMaterials();
+    }
+
+    public void addUser(LoginUser loginUser){
+        logger.info("adding New User");
+        shopMapper.addUser(loginUser);
     }
 
 //    public ShopLogin getShopLoginById(String id) {

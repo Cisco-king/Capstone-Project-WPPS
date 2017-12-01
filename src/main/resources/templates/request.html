@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>AquaJMT | Inventory</title>
+    <title>WPPS | Users</title>
     <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
 
 
@@ -15,7 +15,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Bottle Sales Records</h1>
+                <h1 class="page-header">Users Account Records</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -26,16 +26,20 @@
                     <div class="panel-heading">
                         <form class="form-inline">
                             <div class="form-group">
-                                <label>Display Sales From:</label>
+                                <!--<label>Display Sales From:</label>
                                 <select class="form-control">
                                     <option>Today</option>
                                     <option>The past 7 days</option> Line 39 lang yung error ko
                                     <option>The past 30 days</option>
                                     <option>The past year</option>
-                                </select>
+                                </select>-->
+                                <button type="button" onclick="location.href='adduser';" class="btn btn-primary" style="float:right">
+                                    <i class="fa fa-plus-square-o fa-fw"></i>
+                                    Add New User
+                                </button>
                             </div>
                             <!-- OKS NA!!!!-->
-                            <button type="button" onclick="downloadCSV({filename: 'bottle-sales.csv'});" class="btn btn-primary"  style="float:right">Generate Report</button>
+
                         </form>
                     </div>
                     <!-- /.panel-heading -->
@@ -44,33 +48,33 @@
                                id="dataTables-example">
                             <thead>
                             <tr>
-                                <th>Sold on</th>
-                                <th>Sold to</th>
-                                <th>Address</th>
-                                <th>No. of Round</th>
-                                <th>Cost per Bottle</th>
+                                <th>Employee ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Action</th>
+                                <!--<th>Cost per Bottle</th>
                                 <th>No. of Slim</th>
                                 <th>Cost per Bottle</th>
-                                <th>Total Cost</th>
+                                <th>Total Cost</th>-->
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="odd gradeX" th:each="battleSales: ${bottleSalesRecord}">
-                                <td th:text="${battleSales.createdOn}"></td>
-                                <td th:text="${battleSales.name}"></td>
-                                <td th:text="${battleSales.customerAddress}"></td>
-                                <td th:text="${battleSales.roundOrdered}" class="center"></td>
-                                <td th:text="${battleSales.costPerItem}" class="center"></td>
-                                <td th:text="${battleSales.slimOrdered}" class="center"></td>
-                                <td th:text="${battleSales.costPerItem}" class="center"></td>
-                                <td th:text="${battleSales.totalCost}" class="center"></td>
+                            <tr class="odd gradeX" th:each="userDetails: ${users}">
+                                <td th:text="${userDetails.empId}"></td>
+                                <td th:text="${userDetails.firstName + ' ' + userDetails.lastName}"></td>
+                                <td th:text="${userDetails.email}"></td>
+                                <td>
+                                    <button><i class="fa fa-edit fa-fw"></i></button>
+                                    |
+                                    <button><i class="fa fa-trash-o fa-fw"></i></button>
+                                </td>
                             </tr>
                             </tbody>
                             <thead>
-                            <tr>
+                            <!--<tr>
                                 <th colspan="7">Total Sales</th>
                                 <th>P666.00</th>
-                            </tr>
+                            </tr>-->
                             </thead>
                         </table>
                         <!-- /.panel-body -->
@@ -107,6 +111,7 @@
             link.setAttribute('download', filename);
             link.click();
         }
+
         function convertArrayOfObjectsToCSV(args) {
             var result, ctr, keys, columnDelimiter, lineDelimiter, data;
 

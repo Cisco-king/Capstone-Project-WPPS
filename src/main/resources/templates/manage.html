@@ -1,135 +1,301 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
-    <title>AquaJMT | Profile </title>
+    <title>WPPS | Materials </title>
     <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
 </head>
 <body>
-<div class="container-fluid" style="background-color: #00008B">
-    <div class="row">
-        <div class="">
-            <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
-        </div>
-    </div>
-</div>
+<div id="wrapper" style="background-color: #00008B">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
 
 
-<div class="container-fluid">
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                 <h1 class="page-header">Profile Management</h1>
+                <h1 class="page-header">Material Records</h1>
             </div>
-        <!-- /.col-lg-12 -->
+            <!-- /.col-lg-12 -->
         </div>
-         <!-- /.row -->
+        <!-- /.row -->
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                         You can look at and change the details of your store's profile here.
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <!--<label>Display Sales From:</label>
+                                <select class="form-control">
+                                    <option>Today</option>
+                                    <option>The past 7 days</option> Line 39 lang yung error ko
+                                    <option>The past 30 days</option>
+                                    <option>The past year</option>
+                                </select>-->
+                                <button type="button" onclick="" class="btn btn-primary" style="float:right">
+                                    <i class="fa fa-plus-square-o fa-fw"></i>
+                                    Add New Material
+                                </button>
+                            </div>
+                            <!-- OKS NA!!!!-->
+
+                        </form>
                     </div>
+                    <!-- /.panel-heading -->
                     <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <form th:object="${shop}" role="form">
-                                    <div class="form-group">
-                                        <label>Business Name</label>
-                                        <input class="form-control" placeholder="Business Name" th:field="*{businessName}"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Address</label>
-                                        <input class="form-control" placeholder="Business Address" th:field="*{address}"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Contact Number</label>
-                                        <input class="form-control" placeholder="Business Number" th:field="*{cellphoneNo}"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Alternative Number</label>
-                                        <input class="form-control" placeholder="Alternative Number" th:field="*{alternateNo}"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                            <label>Opening Time</label> <input type="time" th:value="*{timeOpen}"/>
-
-                                            <label>Closing Time</label> <input type="time" th:value="*{timeClose}"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Open on Sundays?</label>
-                                        <label class="radio-inline">
-                                            <input type="radio" name="radioSundays" id="radio1" value="option1"/>Yes
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input type="radio" name="radioSundays" id="radio2" value="option2"/>No
-                                        </label>
-
-                                        <label>Open on Holidays?</label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="radioHolidays" id="radio3" value="option1"/>Yes
-                                            </label>
-                                        <label class="radio-inline">
-                                            <input type="radio" name="radioHolidays" id="radio4" value="option2"/>No
-                                        </label>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Transaction Types</label>
-                                        <label class="radio-inline">
-                                            <input type="radio" name="radioSwaps" id="radio5" value="option1"/>Allows Pick-ups and Swaps
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input type="radio" name="radioSwaps" id="radio6" value="option2"/>Allows Pick-ups only
-                                        </label>
-                                    </div>
-
-                                    <button type="button" class="btn btn-success btn-lg">Update Profile</button>
-                                </form>
-                            </div>
-                        <!-- /.col-lg-6 (nested) -->
-                            <div class="col-lg-6">
-                                <form th:object="${water}" role="form">
-
-                                    <label>Price of Alkaline Water</label>
-                                    <div class="form-group input-group">
-                                        <span class="input-group-addon">₱ </span>
-                                        <input type="text" class="form-control" th:value="*{alkalinePrice}"/>
-                                    </div>
-
-                                    <label>Price of Mineral Water</label>
-                                    <div class="form-group input-group">
-                                        <span class="input-group-addon">₱ </span>
-                                        <input type="text" class="form-control" th:value="*{mineralPrice}"/>
-                                    </div>
-
-                                    <label>Price of Purified Water</label>
-                                    <div class="form-group input-group">
-                                        <span class="input-group-addon">₱ </span>
-                                        <input type="text" class="form-control" th:value="*{purifiedPrice}"/>
-                                    </div>
-
-                                    <label>Price of Distilled Water</label>
-                                    <div class="form-group input-group">
-                                        <span class="input-group-addon">₱ </span>
-                                        <input type="text" class="form-control" th:value="*{distilledPrice}"/>
-                                    </div>
-
-                                    <button type="submit" class="btn btn-success btn-lg">Update Prices</button>
-                                </form>
-                            </div>
-                        <!-- /.col-lg-6 (nested) -->
-                        </div>
-                    <!-- /.row (nested) -->
+                        <table width="100%" class="table table-striped table-bordered table-hover"
+                               id="dataTables-example">
+                            <thead>
+                            <tr>
+                                <th>Material ID</th>
+                                <th>Material Name</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                                <!--<th>Cost per Bottle</th>
+                                <th>No. of Slim</th>
+                                <th>Cost per Bottle</th>
+                                <th>Total Cost</th>-->
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="odd gradeX" th:each="materialsData: ${materials}">
+                                <td th:text="${materialsData.materialId}"></td>
+                                <td th:text="${materialsData.materialDesc}"></td>
+                                <td th:text="${materialsData.qty}"></td>
+                                <td th:text="${materialsData.price}"></td>
+                                <td>
+                                    <button><i class="fa fa-edit fa-fw"></i></button>
+                                    |
+                                    <button><i class="fa fa-trash-o fa-fw"></i></button>
+                                </td>
+                            </tr>
+                            </tbody>
+                            <thead>
+                            <!--<tr>
+                                <th colspan="7">Total Sales</th>
+                                <th>P666.00</th>
+                            </tr>-->
+                            </thead>
+                        </table>
+                        <!-- /.panel-body -->
                     </div>
-                <!-- /.panel-body -->
+                    <!-- /.panel -->
                 </div>
-            <!-- /.panel -->
+                <!-- /.col-lg-12 -->
             </div>
-        <!-- /.col-lg-12 -->
-         </div>
-    <!-- /.row -->
+
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
     </div>
+
+    <script type="text/javascript" th:inline="javascript">
+        var map = /*[[${bottleSalesRecord}]]*/ [];
+
+        function downloadCSV(args) {
+            var data, filename, link;
+            var csv = convertArrayOfObjectsToCSV({
+                data: map
+            });
+            if (csv == null) return;
+
+            filename = args.filename || 'export.csv';
+
+            if (!csv.match(/^data:text\/csv/i)) {
+                csv = 'data:text/csv;charset=utf-8,' + csv;
+            }
+            data = encodeURI(csv);
+
+            link = document.createElement('a');
+            link.setAttribute('href', data);
+            link.setAttribute('download', filename);
+            link.click();
+        }
+
+        function convertArrayOfObjectsToCSV(args) {
+            var result, ctr, keys, columnDelimiter, lineDelimiter, data;
+
+            data = args.data || null;
+            if (data == null || !data.length) {
+                return null;
+            }
+
+            columnDelimiter = args.columnDelimiter || ',';
+            lineDelimiter = args.lineDelimiter || '\n';
+
+            keys = Object.keys(data[0]);
+
+            result = '';
+            result += keys.join(columnDelimiter);
+            result += lineDelimiter;
+
+            data.forEach(function (item) {
+                ctr = 0;
+                keys.forEach(function (key) {
+                    if (ctr > 0) result += columnDelimiter;
+
+                    result += item[key];
+                    ctr++;
+                });
+                result += lineDelimiter;
+            });
+
+            return result;
+        }
+    </script>
 </div>
+
+
+
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>WPPS | Materials </title>
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div id="wrapper" style="background-color: #00008B">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Material Records</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <!--<label>Display Sales From:</label>
+                                <select class="form-control">
+                                    <option>Today</option>
+                                    <option>The past 7 days</option> Line 39 lang yung error ko
+                                    <option>The past 30 days</option>
+                                    <option>The past year</option>
+                                </select>-->
+                                <button type="button" onclick="" class="btn btn-primary" style="float:right">
+                                    <i class="fa fa-plus-square-o fa-fw"></i>
+                                    Add New Material
+                                </button>
+                            </div>
+                            <!-- OKS NA!!!!-->
+
+                        </form>
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <table width="100%" class="table table-striped table-bordered table-hover"
+                               id="dataTables-example">
+                            <thead>
+                            <tr>
+                                <th>Material ID</th>
+                                <th>Material Name</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                                <!--<th>Cost per Bottle</th>
+                                <th>No. of Slim</th>
+                                <th>Cost per Bottle</th>
+                                <th>Total Cost</th>-->
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="odd gradeX" th:each="materialsData: ${materials}">
+                                <td th:text="${materialsData.materialId}"></td>
+                                <td th:text="${materialsData.materialDesc}"></td>
+                                <td th:text="${materialsData.qty}"></td>
+                                <td th:text="${materialsData.price}"></td>
+                                <td>
+                                    <button><i class="fa fa-edit fa-fw"></i></button>
+                                    |
+                                    <button><i class="fa fa-trash-o fa-fw"></i></button>
+                                </td>
+                            </tr>
+                            </tbody>
+                            <thead>
+                            <!--<tr>
+                                <th colspan="7">Total Sales</th>
+                                <th>P666.00</th>
+                            </tr>-->
+                            </thead>
+                        </table>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+
+    <script type="text/javascript" th:inline="javascript">
+        var map = /*[[${bottleSalesRecord}]]*/ [];
+
+        function downloadCSV(args) {
+            var data, filename, link;
+            var csv = convertArrayOfObjectsToCSV({
+                data: map
+            });
+            if (csv == null) return;
+
+            filename = args.filename || 'export.csv';
+
+            if (!csv.match(/^data:text\/csv/i)) {
+                csv = 'data:text/csv;charset=utf-8,' + csv;
+            }
+            data = encodeURI(csv);
+
+            link = document.createElement('a');
+            link.setAttribute('href', data);
+            link.setAttribute('download', filename);
+            link.click();
+        }
+
+        function convertArrayOfObjectsToCSV(args) {
+            var result, ctr, keys, columnDelimiter, lineDelimiter, data;
+
+            data = args.data || null;
+            if (data == null || !data.length) {
+                return null;
+            }
+
+            columnDelimiter = args.columnDelimiter || ',';
+            lineDelimiter = args.lineDelimiter || '\n';
+
+            keys = Object.keys(data[0]);
+
+            result = '';
+            result += keys.join(columnDelimiter);
+            result += lineDelimiter;
+
+            data.forEach(function (item) {
+                ctr = 0;
+                keys.forEach(function (key) {
+                    if (ctr > 0) result += columnDelimiter;
+
+                    result += item[key];
+                    ctr++;
+                });
+                result += lineDelimiter;
+            });
+
+            return result;
+        }
+    </script>
+</div>
+
+
+
+
 </body>
 </html>

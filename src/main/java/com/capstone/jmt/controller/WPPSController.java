@@ -1,14 +1,18 @@
 package com.capstone.jmt.controller;
 
 import com.capstone.jmt.data.LoginUser;
+import com.capstone.jmt.data.Material;
 import com.capstone.jmt.data.ShopLogin;
 import com.capstone.jmt.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Created by macbookpro on 11/2/17.
@@ -74,8 +78,13 @@ public class WPPSController {
     }
 
     @RequestMapping(value = "/request", method = RequestMethod.GET)
-    public String showRequest() {
+    public String showRequest(Model model) {
 
+        List<LoginUser> allUsers =  shopService.getAllUsers();
+        //Validation
+        if(null == allUsers)
+            return "redirect:/login";
+        model.addAttribute("users", allUsers);
         return "request";
     }
 
@@ -98,8 +107,10 @@ public class WPPSController {
     }
 
     @RequestMapping(value = "/manage", method = RequestMethod.GET)
-    public String showManage() {
+    public String showManage(Model model) {
 
+
+        model.addAttribute("materials", shopService.getAllMaterials());
         return "manage";
     }
 
@@ -122,9 +133,20 @@ public class WPPSController {
     }
 
     @RequestMapping(value = "/adduser", method = RequestMethod.GET)
-    public String showAdduser() {
+    public String showAdduser(@Valid LoginUser loginUser, Model model) {
+
+        //Setting value to USER
+        model.addAttribute("newUser", new LoginUser());
 
         return "adduser";
+    }
+
+    @RequestMapping(value = "/addNewUser", method = RequestMethod.POST)
+    public String addNewUser(@Valid LoginUser loginUser, BindingResult bindingResult, Model model){
+
+        //Trying to save a New USER
+        shopService.addUser(loginUser);
+        return "redirect:/dashboard/";
     }
 
     @RequestMapping(value = "/budget", method = RequestMethod.GET)
