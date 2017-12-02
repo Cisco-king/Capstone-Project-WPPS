@@ -20,7 +20,10 @@ import java.util.UUID;
 @Service("shopService")
 public class ShopService {
 
+
     private static final Logger logger = LoggerFactory.getLogger(ShopService.class);
+
+
 
     @Autowired
     private ShopMapper shopMapper;
@@ -54,6 +57,9 @@ public class ShopService {
 
     public void addUser(LoginUser loginUser){
         logger.info("adding New User");
+        LoginUser loginUser1 = shopMapper.loadUserByEmpId(loginUser.getEmpId());
+
+
         shopMapper.addUser(loginUser);
     }
 

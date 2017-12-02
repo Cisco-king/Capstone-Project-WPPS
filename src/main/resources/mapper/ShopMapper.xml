@@ -29,6 +29,10 @@
         SELECT * FROM data_employee WHERE email = #{email}
     </select>
 
+    <select id="loadUserByEmpId" resultMap="shopLoginMap" resultType="com.capstone.jmt.data.LoginUser">
+        SELECT * FROM data_employee WHERE emp_id = #{empId}
+    </select>
+
     <select id="getAllUsers" resultMap="shopLoginMap" resultType="java.util.List">
         SELECT * FROM data_employee
     </select>

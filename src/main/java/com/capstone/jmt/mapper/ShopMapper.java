@@ -3,6 +3,7 @@ package com.capstone.jmt.mapper;
 
 import com.capstone.jmt.data.*;
 import org.apache.ibatis.annotations.Param;
+import sun.rmi.runtime.Log;
 
 import java.util.List;
 
@@ -44,6 +45,8 @@ public interface ShopMapper {
     List<Material> getAllMaterials();
 
     void addUser(@Param("newUser") LoginUser loginUser);
+
+    LoginUser loadUserByEmpId(@Param("empId") String empId);
 
 //    Double getTotalSalesById(@Param("shopId") String shopId);
 //

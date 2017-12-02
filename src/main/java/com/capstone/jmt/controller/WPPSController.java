@@ -25,6 +25,8 @@ public class WPPSController {
     @Autowired
     private ShopService shopService;
 
+    private int increment = 0;
+
 
     @ModelAttribute("sessionUser")
     public LoginUser loginCurrentUser() {
@@ -114,6 +116,14 @@ public class WPPSController {
         return "manage";
     }
 
+    @RequestMapping(value = "/addNewMaterial", method = RequestMethod.POST)
+    public String addMaterial(@Valid Material material, Model model){
+
+
+
+        return "redirect:/dashboard";
+    }
+
     @RequestMapping(value = "/report", method = RequestMethod.GET)
     public String showReport() {
 
@@ -145,6 +155,7 @@ public class WPPSController {
     public String addNewUser(@Valid LoginUser loginUser, BindingResult bindingResult, Model model){
 
         //Trying to save a New USER
+        loginUser.setEmpId("EMP0000" + String.valueOf(increment));
         shopService.addUser(loginUser);
         return "redirect:/dashboard/";
     }
