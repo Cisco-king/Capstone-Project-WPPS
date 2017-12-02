@@ -9,6 +9,7 @@
         <result column="emp_id" property="empId" jdbcType="VARCHAR" />
         <result column="contact_no" property="contactNo" jdbcType="VARCHAR" />
         <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="ref_role_user_id" property="refRoleUserId" jdbcType="INTEGER" />
     </resultMap>
 
     <resultMap id="materialsMap" type="com.capstone.jmt.data.Material">
@@ -22,11 +23,21 @@
         <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
     </resultMap>
 
+    <resultMap id="RefUserMap" type="com.capstone.jmt.data.RefUser">
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="role_user" property="roleUser" jdbcType="VARCHAR"/>
+        <result column="last_id" property="lastId" jdbcType="INTEGER"/>
+    </resultMap>
+
 
 
 
     <select id="loadUserByEmail" resultMap="shopLoginMap" resultType="com.capstone.jmt.data.LoginUser">
         SELECT * FROM data_employee WHERE email = #{email}
+    </select>
+
+    <select id="loadUserByEmpId" resultMap="shopLoginMap" resultType="com.capstone.jmt.data.LoginUser">
+        SELECT * FROM data_employee WHERE emp_id = #{empId}
     </select>
 
     <select id="getAllUsers" resultMap="shopLoginMap" resultType="java.util.List">
@@ -37,18 +48,34 @@
         SELECT * FROM data_materials
     </select>
 
+    <select id="getRefUsers" resultMap="RefUserMap" resultType="java.util.List">
+        SELECT * FROM ref_role_user
+    </select>
+
     <insert id="addUser" flushCache="true">
       INSERT INTO data_employee(
-      first_name, last_name, emp_id, contact_no, email, password
+      first_name, last_name, emp_id, contact_no, email, password,ref_role_user_id
       ) VALUES (
       #{newUser.firstName, jdbcType=VARCHAR},
       #{newUser.lastName, jdbcType=VARCHAR},
       #{newUser.empId, jdbcType=VARCHAR},
       #{newUser.contactNo, jdbcType=VARCHAR},
       #{newUser.email, jdbcType=VARCHAR},
-      #{newUser.password, jdbcType=VARCHAR}
+      #{newUser.password, jdbcType=VARCHAR},
+      #{newUser.refRoleUserId, jdbcType=INTEGER}
       )
     </insert>
+
+    <update id="incrementId" flushCache="true">
+        UPDATE ref_role_user
+        SET last_id = last_id + 1
+        WHERE id = #{id}
+    </update>
+
+    <select id="getLastId" resultType="java.lang.Integer">
+        SELECT last_id FROM ref_role_user
+        WHERE id = #{id}
+    </select>
     
     <!--<select id="getShopInfoById" resultMap="shopInfoMap" resultType="com.capstone.jmt.data.ShopInfo">-->
         <!--SELECT * FROM shop_info WHERE id = #{id}-->

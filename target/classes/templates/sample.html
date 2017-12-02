@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <style type="text/css">
+        td,
+        th {
+            padding: 5px;
+        }
+
+        .fullTable {
+            right: 0;
+            position: fixed;
+            height: 100vh;
+            border-left: 2px solid #000;
+            overflow: auto;
+        }
+
+        #eletable {
+            z-index: 2;
+            background: #fff;
+        }
+
+        div {
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<div ng-app="myApp" ng-controller="customersCtrl">
+    <div class="col-md-7">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#addEmployee">Add Employee</a></li>
+            <li><a href="#filterEmployee">Filter Employee</a></li>
+        </ul>
+        <div class="tab-content col-md-12">
+            <form id="addEmployee" class="tab-pane fade in active">
+                <h1>Add Employee</h1>
+                <p>Name : <input type="text" ng-model="addEmployee.name"/></p>
+                <p>Designation : <input type="text" ng-model="addEmployee.designation"/></p>
+                <p>Company Id : <input type="number" ng-model="addEmployee.company.id"/></p>
+                <p>Company Name : <input type="text" ng-model="addEmployee.company.name"/></p>
+                <p>Rating : <input type="number" ng-model="addEmployee.rating"/></p>
+                <p>Check : <input type="checkbox" ng-model="addEmployee.action"/></p>
+                <button type="reset" ng-click="addEmployeefunc()">Add</button>
+            </form>
+            <form id="filterEmployee" class="tab-pane fade">
+                <h1>Filter Employee</h1>
+                <p>Name : <input type="text" ng-model="searchtest.name"/></p>
+                <p>Designation : <input type="text" ng-model="searchtest.designation"/></p>
+                <p>Company Name : <input type="text" ng-model="searchtest.company.name"/></p>
+                <p>Rating(greater than) : <input type="number" ng-model="minrating"/></p>
+                <button type="reset" ng-click="resetFilter()">Reset</button>
+            </form>
+        </div>
+        <hr class="col-md-12"/>
+        <h1 class="col-md-12">Filtered/Paginated Table</h1>
+        <table id="eletable" ng-init="check=''" class="table table-responsive col-md-12">
+            <tr>
+                <th ng-click="order('name')">Name</th>
+                <th ng-click="order('designation')">Designation</th>
+                <th ng-click="order('company.name')">Company Name</th>
+                <th ng-click="order('rating')">Ratings</th>
+                <th ng-click="order('action')">Check</th>
+                <th>Actions</th>
+            </tr>
+            <tr ng-repeat="client in clients | orderBy:predicate:reverse | filter:searchtest | filter: greaterThan('rating') | limitTo:pagelimit:sstart">
+                <td>
+                    <div class="labelValues">{{client.name}}</div><input class="hidden editers" type="text" ng-click="saveChange($event,client,'name')" value="{{ client.name}}"/></td>
+                <td>
+                    <div class="labelValues">{{client.designation}}</div><input class="hidden editers" type="text" ng-click="saveChange($event,client,'designation')" value="{{ client.designation}}"/></td>
+                <td>
+                    <div class="labelValues">{{client.company.name}}</div><input class="hidden editers" type="text" ng-click="saveChange($event,client,'company.name')" value="{{ client.company.name}}"/></td>
+                <td>
+                    <div class="labelValues">{{client.rating}}</div><input class="hidden editers" type="text" ng-click="saveChange($event,client,'rating')" value="{{ client.rating}}"/></td>
+                <td>
+                    <div class="labelValues">{{client.action}}</div><input class="hidden editers" ng-click="saveChange($event, client, 'action')" type="checkbox" ng-checked="{{client.action}}"/></td>
+                <td><button type="button" class="btn btn-warning edit btn-xs">Edit</button><button type="button" class="btn btn-primary save btn-xs hidden">Save</button><button type="button" class="btn cancel btn-xs hidden">Cancel</button></td>
+            </tr>
+        </table>
+        <button class="prev" ng-click="prev($event)" ng-disabled="startReach">Previous</button>
+        <button class="next" ng-click="next($event)" ng-disabled="endReach">Next</button>
+    </div>
+    <div class="col-md-5 fullTable">
+        <h1>Full Table</h1>
+        <table class="table table-responsive col-md-12">
+            <tr>
+                <th>Name</th>
+                <th>Designation</th>
+                <th>Company Name</th>
+                <th>Ratings</th>
+                <th>check</th>
+            </tr>
+            <tr ng-repeat="client in clients">
+                <td>{{client.name}}</td>
+                <td>{{client.designation}}</td>
+                <td>{{client.company.name}}</td>
+                <td>{{client.rating}}</td>
+                <td>{{client.action}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    var app = angular.module('myApp', []);
+    app.controller('customersCtrl', function($scope, $http, $filter) {
+        var orderBy = $filter('orderBy');
+        $scope.clients = [{
+            name: 'Steven',
+            designation: 'Database Administrator',
+            company: {
+                id: 3,
+                name: 'Google'
+            },
+            rating: 100,
+            action: 'false'
+        }, {
+            name: 'Jim',
+            designation: 'Designer',
+            company: {
+                id: 2,
+                name: 'Facebook'
+            },
+            rating: 500,
+            action: 'true'
+        }, {
+            name: 'Michael',
+            designation: 'Front-End Developer',
+            company: {
+                id: 1,
+                name: 'Apple'
+            },
+            rating: 50,
+            action: 'true'
+        }, {
+            name: 'Josh',
+            designation: 'Network Engineer',
+            company: {
+                id: 3,
+                name: 'Google'
+            },
+            rating: 100,
+            action: 'true'
+        }, {
+            name: 'Ellie',
+            designation: 'Internet Marketing Engineer',
+            company: {
+                id: 1,
+                name: 'Apple'
+            },
+            rating: 1000,
+            action: 'true'
+        }];
+        $scope.order = function(predicate) {
+            $scope.predicate = predicate;
+            $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+            $scope.friends = orderBy($scope.friends, predicate, $scope.reverse);
+        };
+        $scope.i = 0;
+        $scope.greaterThan = function(prop) {
+            return function(item) {
+                var minrating = $scope.minrating;
+                if (minrating == undefined) minrating = 0;
+                if (item[prop] * 1 >= minrating * 1) return true;
+            }
+        }
+        $scope.pagelimit = 3;
+        $scope.sstart = 0;
+        $scope.endReach = false;
+        $scope.startReach = true;
+        $scope.next = function($event) {
+            $scope.sstart += $scope.pagelimit;
+            $scope.startReach = false;
+            if (($scope.sstart + $scope.pagelimit) > $scope.clients.length - 1) {
+                $scope.endReach = true;
+            }
+        };
+        $scope.prev = function($event) {
+            $scope.sstart -= $scope.pagelimit;
+            $scope.endReach = false;
+            if ($scope.sstart == 0) {
+                $scope.startReach = true;
+            }
+        };
+        $scope.pagestart = 1;
+        angular.forEach($scope.clients.length, function() {
+            $scope.vgrg = angular.fromJson($(".cont").eq($scope.i).val());
+            $scope.clients.push($scope.vgrg);
+            $scope.i++;
+        });
+
+        $scope.saveChange = function($event, item, element) {
+            if ($event.currentTarget.type == "checkbox")
+                item[element] = $event.currentTarget.checked;
+            else
+            if (element.indexOf(".") > -1) {
+                element = element.split(".")[0] + "[" + element.split(".")[1] + "]";
+                item.element = $event.currentTarget.value;
+                item.company["name"] = item.element;
+            } else
+                item[element] = $event.currentTarget.value;
+            //item[element]=$scope.obj;
+        };
+        $scope.addEmployeefunc = function() {
+            if (undefined != $scope.addEmployee &amp;&amp; $scope.addEmployee.length > 3) {
+                if ($scope.addEmployee.action == undefined)
+                    $scope.addEmployee.action = "false";
+                $scope.clients.push($scope.addEmployee);
+                $scope.addEmployee = [];
+            } else
+                alert("Enter minimal information");
+        };
+        $scope.resetFilter = function() {
+            $scope.searchtest = [];
+            $scope.minrating = "";
+        }
+    });
+
+    $(document).ready(function() {
+        var prevValues = [];
+        $(document).delegate(".edit", "click", function() {
+            prevValues = [];
+            var trEle = $(this).closest("tr");
+            trEle.find(".editers").removeClass("hidden");
+            trEle.find(".labelValues").addClass("hidden");
+            trEle.find(".save, .cancel").removeClass("hidden");
+            $(this).addClass("hidden");
+            trEle.find(".editers").each(function() {
+                if ($(this)[0].type == "checkbox")
+                    prevValues.push($(this)[0].checked);
+                else
+                    prevValues.push($(this).val());
+            });
+            $(".edit").attr("disabled", true);
+        });
+        $(document).delegate(".cancel", "click", function() {
+            var trEle = $(this).closest("tr");
+            trEle.find(".editers").addClass("hidden");
+            trEle.find(".labelValues").removeClass("hidden");
+            trEle.find(".save, .cancel").addClass("hidden");
+            trEle.find(".edit").removeClass("hidden");
+            for (var i = 0; i &lt; prevValues.length; i++) {
+                trEle.find(".editers").eq(i).val(prevValues[i]).click();
+                if (trEle.find(".editers").eq(i)[0].type == "checkbox" &amp;&amp; trEle.find(".editers").eq(i)[0].checked != prevValues[i])
+                    trEle.find(".editers").eq(i).click();
+            }
+            $(".edit").attr("disabled", false);
+        });
+        $(document).delegate(".save", "click", function() {
+            var trEle = $(this).closest("tr");
+            trEle.find(".editers").addClass("hidden");
+            trEle.find(".labelValues").removeClass("hidden");
+            trEle.find(".save, .cancel").addClass("hidden");
+            trEle.find(".edit").removeClass("hidden");
+            for (var i = 0; i &lt; trEle.find(".editers").length; i++) {
+                if (trEle.find(".editers").eq(i)[0].type != "checkbox")
+                    trEle.find(".editers").eq(i).click();
+            }
+            $(".edit").attr("disabled", false);
+        });
+    });
+
+    $(document).ready(function() {
+        $(".nav-tabs a").click(function() {
+            $(this).tab('show');
+        });
+        $('.nav-tabs a').on('shown.bs.tab', function(event) {
+            var x = $(event.target).text(); // active tab
+            var y = $(event.relatedTarget).text(); // previous tab
+            $(".act span").text(x);
+            $(".prev span").text(y);
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -55,12 +55,59 @@ public class ShopService {
         return shopMapper.getAllMaterials();
     }
 
-    public void addUser(LoginUser loginUser){
+    public boolean addUser(LoginUser loginUser){
         logger.info("adding New User");
         LoginUser loginUser1 = shopMapper.loadUserByEmpId(loginUser.getEmpId());
+        if(null == loginUser1){
+            switch (loginUser.getRefRoleUserId()){
 
+                case 0:
+                    loginUser.setEmpId("PRM" + String.valueOf(shopMapper.getLastId(loginUser.getRefRoleUserId())));
+                    shopMapper.incrementId(loginUser.getRefRoleUserId());
+                    break;
+                case 1:
+                    loginUser.setEmpId("CE" + String.valueOf(shopMapper.getLastId(loginUser.getRefRoleUserId())));
+                    shopMapper.incrementId(loginUser.getRefRoleUserId());
+                    break;
+                case 2:
+                    loginUser.setEmpId("AM" + String.valueOf(shopMapper.getLastId(loginUser.getRefRoleUserId())));
+                    shopMapper.incrementId(loginUser.getRefRoleUserId());
+                    break;
+                case 3:
+                    loginUser.setEmpId("PUM" + String.valueOf(shopMapper.getLastId(loginUser.getRefRoleUserId())));
+                    shopMapper.incrementId(loginUser.getRefRoleUserId());
+                    break;
+                case 4:
+                    loginUser.setEmpId("SCM" + String.valueOf(shopMapper.getLastId(loginUser.getRefRoleUserId())));
+                    shopMapper.incrementId(loginUser.getRefRoleUserId());
+                    break;
+                case 5:
+                    loginUser.setEmpId("EP" + String.valueOf(shopMapper.getLastId(loginUser.getRefRoleUserId())));
+                    shopMapper.incrementId(loginUser.getRefRoleUserId());
+                    break;
+                case 6:
+                    loginUser.setEmpId("PP" + String.valueOf(shopMapper.getLastId(loginUser.getRefRoleUserId())));
+                    shopMapper.incrementId(loginUser.getRefRoleUserId());
+                    break;
+                case 7:
+                    loginUser.setEmpId("AA" + String.valueOf(shopMapper.getLastId(loginUser.getRefRoleUserId())));
+                    shopMapper.incrementId(loginUser.getRefRoleUserId());
+                    break;
+                case 8:
+                    loginUser.setEmpId("ADMIN" + String.valueOf(shopMapper.getLastId(loginUser.getRefRoleUserId())));
+                    shopMapper.incrementId(loginUser.getRefRoleUserId());
+                    break;
 
-        shopMapper.addUser(loginUser);
+            }
+            shopMapper.addUser(loginUser);
+            return true;
+
+        }else
+        return false;
+    }
+
+    public List<RefUser> getRefUsers(){
+        return shopMapper.getRefUsers();
     }
 
 //    public ShopLogin getShopLoginById(String id) {

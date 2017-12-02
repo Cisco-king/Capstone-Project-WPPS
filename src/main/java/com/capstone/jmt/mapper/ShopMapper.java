@@ -14,39 +14,21 @@ import java.util.List;
 public interface ShopMapper {
 
 
-//    ShopLogin getShopLoginById(@Param("id") String id);
-//
-//    ShopInfo getShopInfoById(@Param("id") String id);
-//
-//    ShopLocation getShopLocationById(@Param("id") String id);
-//
-//    ShopSalesInformation getShopSalesInformationById(@Param("id") String id);
-//
-//    Integer addShopInfo(@Param("shop") ShopInfo shop);
-//
-//    Integer updateShopInfo(@Param("shop") ShopInfo shop);
-//
-//    Integer addShopLogin(@Param("shopUser") ShopLogin shop);
-//
-//    Integer updateShopLogin(@Param("shopUser") ShopLogin shop);
-//
-//    Integer addShopLocation(@Param("shop") ShopLocation shop);
-//
-//    Integer updateShopLocation(@Param("shop") ShopLocation shop);
-//
-//    Integer addShopSalesInformation(@Param("shop") ShopSalesInformation shop);
-//
-//    Integer updateShopSalesInformation(@Param("shop") ShopSalesInformation shop);
-
     LoginUser loadUserByEmail(@Param("email") String email);
 
     List<LoginUser> getAllUsers();
 
     List<Material> getAllMaterials();
 
+    List<RefUser> getRefUsers();
+
     void addUser(@Param("newUser") LoginUser loginUser);
 
     LoginUser loadUserByEmpId(@Param("empId") String empId);
+
+    void incrementId(@Param("id") int id);
+
+    int getLastId(@Param("id") int id);
 
 //    Double getTotalSalesById(@Param("shopId") String shopId);
 //

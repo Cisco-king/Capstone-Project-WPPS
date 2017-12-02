@@ -116,6 +116,13 @@ public class WPPSController {
         return "manage";
     }
 
+    @RequestMapping(value = "/addMaterial", method = RequestMethod.GET)
+    public String showAddMaterial(Model model){
+
+        model.addAttribute("newMaterial", new Material());
+        return "addMaterial";
+    }
+
     @RequestMapping(value = "/addNewMaterial", method = RequestMethod.POST)
     public String addMaterial(@Valid Material material, Model model){
 
@@ -147,7 +154,7 @@ public class WPPSController {
 
         //Setting value to USER
         model.addAttribute("newUser", new LoginUser());
-
+        model.addAttribute("typeOfUSer", shopService.getRefUsers());
         return "adduser";
     }
 
@@ -155,7 +162,7 @@ public class WPPSController {
     public String addNewUser(@Valid LoginUser loginUser, BindingResult bindingResult, Model model){
 
         //Trying to save a New USER
-        loginUser.setEmpId("EMP0000" + String.valueOf(increment));
+
         shopService.addUser(loginUser);
         return "redirect:/dashboard/";
     }
@@ -164,5 +171,10 @@ public class WPPSController {
     public String showBudget() {
 
         return "budget";
+    }
+    @RequestMapping(value = "/sample", method = RequestMethod.GET)
+    public String showSample(){
+
+        return "sample";
     }
 }

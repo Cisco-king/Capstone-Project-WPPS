@@ -58,13 +58,21 @@
                                         <input class="form-control" placeholder="Contact No" th:field="*{contactNo}"/>
                                     </div>
                                     <div class="form-group">
-                                        <label style="color: black">Email</label>
-                                        <input class="form-control" placeholder="Email" required="required"
-                                               th:field="*{email}"/>
+                                        <label style="color: black">Type Of User</label>
+                                        <select>
+                                            <option th:each="userType  : ${typeOfUSer}" th:text="${userType.roleUser}" th:value="${userType.id}" th:field="*{refRoleUserId}">
+                                            </option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
+                                        <label style="color: black">Email</label>
+                                        <input class="form-control" placeholder="Email" required="required" value=" "
+                                               th:field="*{email}"/>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label style="color: black">Password</label>
-                                        <input type="password" class="form-control" placeholder="Password"
+                                        <input type="password" class="form-control" placeholder="Password" value=" "
                                                required="required" th:field="*{password}"/>
                                     </div>
                                     <button th:type="submit" class="btn btn-primary">Save</button>

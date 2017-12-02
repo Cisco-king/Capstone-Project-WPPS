@@ -12,7 +12,15 @@ public class LoginUser {
     private String password;
     private String empId;
     private String contactNo;
+    private int refRoleUserId;
 
+    public int getRefRoleUserId() {
+        return refRoleUserId;
+    }
+
+    public void setRefRoleUserId(int refRoleUserId) {
+        this.refRoleUserId = refRoleUserId;
+    }
 
     public String getContactNo() {
         return contactNo;

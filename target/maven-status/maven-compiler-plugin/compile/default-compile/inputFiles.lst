@@ -18,6 +18,7 @@
 /Users/macbookpro/Desktop/Capstone-Project-WPPS/src/main/java/com/capstone/jmt/mapper/CustomerMapper.java
 /Users/macbookpro/Desktop/Capstone-Project-WPPS/src/main/java/com/capstone/jmt/service/CustomerService.java
 /Users/macbookpro/Desktop/Capstone-Project-WPPS/src/main/java/com/capstone/jmt/mapper/ShopMapper.java
+/Users/macbookpro/Desktop/Capstone-Project-WPPS/src/main/java/com/capstone/jmt/data/RefUser.java
 /Users/macbookpro/Desktop/Capstone-Project-WPPS/src/main/java/com/capstone/jmt/config/SwaggerConfig.java
 /Users/macbookpro/Desktop/Capstone-Project-WPPS/src/main/java/com/capstone/jmt/config/WebSecurityConfig.java
 /Users/macbookpro/Desktop/Capstone-Project-WPPS/src/main/java/com/capstone/jmt/controller/WPPSController.java
